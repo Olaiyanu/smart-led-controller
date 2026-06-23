@@ -1,15 +1,15 @@
-# 💡 Smart LED Control System
+# Smart LED Control System
 
 A simple, professional, and interactive web application to control LEDs connected to an Arduino. This project allows you to control your lights using a web interface from any device (like your smartphone) on the same Wi-Fi network, and it even includes **Voice Control**!
 
-## ✨ Features
+## Features
 
-*   **📱 Mobile-Friendly Web Interface**: A responsive and modern dashboard to control your LEDs.
-*   **🎤 Voice Control**: Use your browser's built-in speech recognition to turn lights on or off by just speaking (e.g., "Turn on living room").
-*   **🌐 Local Network Access**: Control your Arduino from your smartphone or tablet without needing internet access.
-*   **⚡ Real-Time Control**: Instantaneous feedback between the web app and the Arduino.
+*   ** Mobile-Friendly Web Interface**: A responsive and modern dashboard to control your LEDs.
+*   ** Voice Control**: Use your browser's built-in speech recognition to turn lights on or off by just speaking (e.g., "Turn on living room").
+*   ** Local Network Access**: Control your Arduino from your smartphone or tablet without needing internet access.
+*   ** Real-Time Control**: Instantaneous feedback between the web app and the Arduino.
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 ### Hardware Requirements
 *   1x Arduino board (e.g., Arduino Uno)
@@ -45,7 +45,7 @@ A simple, professional, and interactive web application to control LEDs connecte
     arduino = serial.Serial('COM3', 9600)
     ```
 
-## 🚀 How to Run
+## How to Run
 
 1.  Start the Flask server by running the following command in your terminal:
     ```bash
@@ -55,7 +55,7 @@ A simple, professional, and interactive web application to control LEDs connecte
 3.  **On your computer:** Open a web browser and go to `https://127.0.0.1:5000` or `https://localhost:5000`. *(Note: Your browser might warn you about the SSL certificate being unsafe because it is self-signed adhoc certificate. You can safely proceed/bypass the warning. HTTPS is required for the browser to allow microphone access).*
 4.  **On your phone:** Ensure your phone is connected to the same Wi-Fi network as your computer. Open a web browser on your phone and enter your computer's IP address with port 5000 (e.g., `https://192.168.1.50:5000`).
 
-## 🗣️ Voice Commands
+## Voice Commands
 Tap the **"Tap to Speak"** button on the dashboard and try saying:
 *   *"Turn on living room"*
 *   *"Turn off living room"*
@@ -64,7 +64,7 @@ Tap the **"Tap to Speak"** button on the dashboard and try saying:
 *   *"Turn on kitchen"*
 *   *"Turn off kitchen"*
 
-## 📂 Project Structure
+## Project Structure
 
 *   `app.py`: The main Python server file using Flask to handle web requests and serial communication.
 *   `templates/index.html`: The HTML file for the web dashboard.
