@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Control Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Smart Control</h1>
+
+    <div class="dashboard">
+        <!-- Voice Control -->
+        <div class="led-card">
+            <h2>Voice Control</h2>
+            <div>
+                <button id="voiceBtn" class="btn primary">Tap to Speak</button>
+            </div>
+            <p id="voiceStatus" class="voice-status">Say "Turn on living room"</p>
+        </div>
+
+        <!-- LED 1 Controls -->
+        <div class="led-card">
+            <h2>Living Room LED</h2>
+            <div class="button-group">
+                <button onclick="sendCommand('/led1/on')" class="btn on">Turn ON</button>
+                <button onclick="sendCommand('/led1/off')" class="btn off">Turn OFF</button>
+            </div>
+        </div>
+
+        <!-- LED 2 Controls -->
+        <div class="led-card">
+            <h2>Bedroom LED</h2>
+            <div class="button-group">
+                <button onclick="sendCommand('/led2/on')" class="btn on">Turn ON</button>
+                <button onclick="sendCommand('/led2/off')" class="btn off">Turn OFF</button>
+            </div>
+        </div>
+
+        <!-- LED 3 Controls -->
+        <div class="led-card">
+            <h2>Kitchen LED</h2>
+            <div class="button-group">
+                <button onclick="sendCommand('/led3/on')" class="btn on">Turn ON</button>
+                <button onclick="sendCommand('/led3/off')" class="btn off">Turn OFF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Recognition Script -->
+    <script>
+        // Function to send commands in the background without refreshing the page
+        function sendCommand(url) {
+            fetch(url).catch(error => console.error('Error:', error));
+        }
+
+        const voiceBtn = document.getElementById('voiceBtn');
+        const voiceStatus = document.getElementById('voiceStatus');
+
+        // Use the browser's built-in Speech Recognition API
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.continuous = false;
+
+            voiceBtn.addEventListener('click', () => {
+                recognition.start();
+                voiceStatus.textContent = "Listening...";
+                voiceBtn.style.backgroundColor = "var(--danger)"; // Turn button red while listening
+                voiceBtn.textContent = "Listening 🔴";
+            });
+
+            recognition.onresult = (event) => {
+                const command = event.results[0][0].transcript.toLowerCase();
+                voiceStatus.textContent = `Heard: "${command}"`;
+                
+                // Reset button appearance
+                voiceBtn.style.backgroundColor = "var(--primary)";
+                voiceBtn.textContent = "Tap to Speak";
+
+                // Map what you say to the URLs
+                if (command.includes('on') && command.includes('living room')) sendCommand('/led1/on');
+                else if (command.includes('off') && command.includes('living room')) sendCommand('/led1/off');
+                else if (command.includes('on') && command.includes('bedroom')) sendCommand('/led2/on');
+                else if (command.includes('off') && command.includes('bedroom')) sendCommand('/led2/off');
+                else if (command.includes('on') && command.includes('kitchen')) sendCommand('/led3/on');
+                else if (command.includes('off') && command.includes('kitchen')) sendCommand('/led3/off');
+                else voiceStatus.textContent = `Didn't understand: "${command}"`;
+            };
+
+            recognition.onerror = (event) => {
+                voiceStatus.textContent = "Error: " + event.error;
+                voiceBtn.style.backgroundColor = "var(--primary)";
+                voiceBtn.textContent = "Tap to Speak";
+            };
+        } else {
+            voiceStatus.textContent = "Voice control is not supported on this browser.";
+        }
+    </script>
+</body>
+</html>
