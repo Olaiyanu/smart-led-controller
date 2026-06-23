@@ -1,4 +1,4 @@
-<img src="assets/demo.png" width="700" alt="demo">
+![Project Demo](assets/demo.png)
 
 # Smart LED Control System
 
