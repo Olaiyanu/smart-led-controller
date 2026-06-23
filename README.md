@@ -6,10 +6,10 @@ A simple, professional, and interactive web application to control LEDs connecte
 
 ## Features
 
-*   ** Mobile-Friendly Web Interface**: A responsive and modern dashboard to control your LEDs.
-*   ** Voice Control**: Use your browser's built-in speech recognition to turn lights on or off by just speaking (e.g., "Turn on living room").
-*   ** Local Network Access**: Control your Arduino from your smartphone or tablet without needing internet access.
-*   ** Real-Time Control**: Instantaneous feedback between the web app and the Arduino.
+*   Mobile-Friendly Web Interface: A responsive and modern dashboard to control your LEDs.
+*   Voice Control: Use your browser's built-in speech recognition to turn lights on or off by just speaking (e.g., "Turn on living room").
+*   Local Network Access: Control your Arduino from your smartphone or tablet without needing internet access.
+*   Real-Time Control: Instantaneous feedback between the web app and the Arduino.
 
 ## Prerequisites
 
