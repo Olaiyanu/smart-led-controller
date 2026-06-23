@@ -1,3 +1,5 @@
+<img src="assets/demo.png" width="700" alt="demo">
+
 # Smart LED Control System
 
 A simple, professional, and interactive web application to control LEDs connected to an Arduino. This project allows you to control your lights using a web interface from any device (like your smartphone) on the same Wi-Fi network, and it even includes **Voice Control**!
@@ -23,7 +25,7 @@ A simple, professional, and interactive web application to control LEDs connecte
 *   **Flask**: A lightweight Python web framework.
 *   **pyserial**: A Python library to communicate with the Arduino.
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### 1. Arduino Setup
 1.  Connect your LEDs to the Arduino pins.
